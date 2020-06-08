@@ -1,5 +1,6 @@
 import { h, Component } from 'preact';
 
+import ImageComponent from './Image'
 export default class App extends Component {
 	
 	/** Gets fired when the route changes.
@@ -14,6 +15,7 @@ export default class App extends Component {
 		return (
 			<div id="app">
 				<h1>home</h1>
+				<ImageComponent src="https://i.imgur.com/JlUvsxa.jpg" width="227" height="227" />
 			</div>
 		);
 	}
