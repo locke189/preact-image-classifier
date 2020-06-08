@@ -1,6 +1,6 @@
 {
-  "name": "template-preact",
-  "short_name": "template-preact",
+  "name": "image-classificator",
+  "short_name": "image-classificator",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",

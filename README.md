@@ -1,4 +1,6 @@
-# template-preact
+# image-classificator
+
+An image classificator based on the example in Tensorflow.js tutorials, implemented using preact.
 
 ## CLI Commands
 
@@ -15,8 +17,6 @@ npm run build
 # test the production build locally
 npm run serve
 
-# run tests with jest and preact-render-spy 
+# run tests with jest and preact-render-spy
 npm run test
 ```
-
-For detailed explanation on how things work, checkout the [CLI Readme](https://github.com/developit/preact-cli/blob/master/README.md).
