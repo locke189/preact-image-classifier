@@ -1,25 +1,38 @@
-import render from "preact-render-to-string";
-import ImageComponent from '../ImageComponent'
+import * as tf from '@tensorflow/tfjs';
+import * as wasm from '@tensorflow/tfjs-backend-wasm'
 import * as mobilenet from '@tensorflow-models/mobilenet';
+import { useEffect, useRef } from 'preact/hooks';
 
-let net;
+async function classify(imgElement, model) {
+  // Make a prediction through the model on our image.
+  const result = await model.classify(imgElement);
+  console.log(result);
+}
 
-function ImageClassificator() {
+function ImageClassificator(props) {
   console.log('Loading mobilenet..');
+  const imageRef = useRef(null);
+  
 
-  // // Load the model.
-  // net = await mobilenet.load();
-  // console.log('Successfully loaded model');
+  useEffect(async () => {
+    // await tf.setBackend('wasm');
+    const model = await mobilenet.load();
+    console.log('Successfully loaded model');
 
-  // // Make a prediction through the model on our image.
-  // const imgEl = document.getElementById('img');
-  // const result = await net.classify(imgEl);
-  // console.log(result);
+    if(imageRef && imageRef.current) {
+      console.log(imageRef.current);
+      classify(imageRef.current, model);
+    }
 
+    return () => {
+      console.log('cleanup...');
+    };
+  });
+  
   return (
     <div className="image-classificator">
-    <ImageComponent ref={ref} src="https://i.imgur.com/JlUvsxa.jpg" width="227" height="227" />
-  </div>
+      <img ref={imageRef} id="img" crossorigin src="https://i.imgur.com/JlUvsxa.jpg" width="227" height="227"/>
+    </div>
   );
 }
 
